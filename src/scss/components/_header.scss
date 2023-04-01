@@ -1,0 +1,97 @@
+.header {
+  min-height: 17rem;
+
+  &__top {
+    padding: 1.4rem 0 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1rem solid $border-gray;
+  }
+  &__blocks {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  &__block-wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-right: 4rem;
+  }
+
+  &__icon-img {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1.5rem;
+  }
+  &__address-top,
+  &__email-top {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+
+    color: $black;
+  }
+  &__address-bottom,
+  &__email-bottom {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1rem solid $border-gray;
+  }
+
+  &__logo {
+    margin-right: 3.8rem;
+  }
+
+  &__catalog-btn {
+    background-image: url("../../assets/images/icon-catalog.svg");
+    padding: 2.1rem 8.1rem 2.1rem 5.4rem;
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 72% 50%;
+  }
+
+  &__cart-link {
+    position: relative;
+  }
+
+  &__cart-img {
+    width: 4.6rem;
+    height: 4.6rem;
+  }
+
+  &__cart-quantity {
+    position: absolute;
+    z-index: 10;
+    bottom: 3rem;
+    right: -1rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: $accent-yellow;
+    color: #ffffff;
+    font-weight: 700;
+    border: 0.3rem solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+  }
+}
+
+@media (max-width: 740px) {
+  .header {
+    &__nav {
+      flex-wrap: wrap;
+    }
+  }
+}

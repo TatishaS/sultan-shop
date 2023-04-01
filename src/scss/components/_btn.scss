@@ -1,0 +1,39 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: $accent-yellow;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  padding: 2.1rem;
+  border-radius: 7.9rem;
+
+  opacity: 1;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background: black;
+    opacity: 0.8;
+    color: #ffffff;
+  }
+
+  &--beige {
+    background-color: beige;
+    color: #ffffff;
+  }
+  &--beige:hover {
+    background: beige;
+  }
+}
+
+@media (max-width: 860px) {
+  .btn {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    padding: 2rem 3rem;
+  }
+}

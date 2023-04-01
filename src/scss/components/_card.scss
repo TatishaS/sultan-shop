@@ -1,0 +1,64 @@
+.card {
+  padding: 4rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &__name {
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    margin-bottom: 1rem;
+  }
+
+  &__price {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+
+    margin-right: 0.4rem;
+  }
+
+  &__img-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  &__link {
+    position: relative;
+
+    font-size: 1.6rem;
+    line-height: 2.1rem;
+
+    &::after {
+      left: -5rem;
+      width: 3rem;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .card {
+    padding: 2rem;
+
+    &__link {
+      display: inline-block;
+      margin-left: 4rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    &__img {
+      width: 50%;
+    }
+    &__img-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

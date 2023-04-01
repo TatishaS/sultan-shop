@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;600&display=swap");
+
+html {
+  height: 100%;
+
+  box-sizing: border-box;
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: inherit;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  height: 100%;
+  min-width: 32rem;
+  min-height: 100vh;
+  font-family: "Inter", "Arial", sans-serif;
+  background: #ffffff;
+  color: $gray;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  word-wrap: break-word;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  max-width: 136.6rem;
+  margin: 0 auto;
+}
+.container {
+  max-width: 195rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.footer {
+  flex: 0 0 auto;
+}
+
+.spinner {
+  width: 620px;
+  margin: 80px auto;
+  text-align: center;
+
+  &__icon {
+    animation: rotate 1s infinite linear;
+  }
+}
