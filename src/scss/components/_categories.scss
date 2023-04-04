@@ -1,0 +1,19 @@
+.categories {
+  margin-bottom: 5rem;
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__item {
+    max-width: 14rem;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 1.5rem 7rem -1.1rem rgba(43, 28, 1, 0.04);
+    border-radius: 1rem;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,32 @@
+.breadcrumbs {
+  margin-top: 4.5rem;
+  margin-bottom: 5rem;
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__item {
+    padding-right: 1rem;
+    cursor: pointer;
+  }
+
+  &__link {
+    font-weight: 300;
+    font-size: 1.4rem;
+    font-weight: 1.7rem;
+    color: $gray;
+    cursor: pointer;
+    &.active {
+      color: rgba(63, 78, 101, 0.5);
+    }
+  }
+
+  &__item:not(:first-child) {
+    padding-left: 1rem;
+  }
+  &__item:not(:last-child) {
+    border-right: 0.1rem dashed rgba(63, 78, 101, 0.3);
+  }
+}

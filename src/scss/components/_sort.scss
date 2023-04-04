@@ -1,0 +1,68 @@
+.sort {
+  position: relative;
+  &__label {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+    }
+
+    b {
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+
+      color: #111111;
+      margin-right: 8px;
+    }
+
+    span {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      cursor: pointer;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    right: 0;
+    margin-top: 1.5rem;
+    background: #ffffff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    overflow: hidden;
+    padding: 10px 0;
+    width: 160px;
+    z-index: 10;
+
+    ul {
+      overflow: hidden;
+      li {
+        padding: 12px 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+
+        &.active,
+        &:hover {
+          background: rgba(254, 95, 30, 0.05);
+        }
+
+        &.active {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  &__item-arrow {
+    margin-left: 0.5rem;
+    width: 0.7rem;
+    height: 0.7rem;
+
+    &.sort__item-arrow--desc {
+      transform: rotate(180deg);
+    }
+  }
+}

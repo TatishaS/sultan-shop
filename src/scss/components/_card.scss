@@ -1,64 +1,86 @@
 .card {
-  padding: 4rem;
+  min-height: 49rem;
+  color: $gray;
+  padding: 2.9rem 2.1rem 2.9rem 2.3rem;
+  box-shadow: 0 1.4rem 3.9rem -1.1rem rgba(0, 0, 0, 0.06);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
 
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  &__img-wrapper {
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+  &__img {
+    width: 100%;
+    height: 19.4rem;
+    object-fit: contain;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  &__content {
+    flex: 1 1 auto;
+    margin-bottom: 1.5rem;
+  }
+  &__volume {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1.1rem;
+  }
+
+  &__volume-img {
+    margin-right: 0.5rem;
+    &--bottle {
+      margin-right: 1rem;
+    }
+  }
 
   &__name {
     font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 2.4rem;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-
-    margin-bottom: 1rem;
-  }
-
-  &__price {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-
-    margin-right: 0.4rem;
-  }
-
-  &__img-wrapper {
+    font-size: 1.6rem;
+    line-height: 2.1rem;
+    color: $black;
     margin-bottom: 2rem;
   }
 
-  &__link {
-    position: relative;
+  &__row-name {
+    display: inline-block;
+    font-weight: 300;
+    margin-right: 0.3rem;
+  }
 
+  &__row-value {
+    font-weight: 500;
+    color: $black;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    font-weight: 800;
     font-size: 1.6rem;
     line-height: 2.1rem;
 
-    &::after {
-      left: -5rem;
-      width: 3rem;
-    }
+    color: $black;
   }
-}
 
-@media (max-width: 1150px) {
-  .card {
-    padding: 2rem;
-
-    &__link {
-      display: inline-block;
-      margin-left: 4rem;
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .card {
-    &__img {
-      width: 50%;
-    }
-    &__img-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  &__btn {
+    min-width: 15.3rem;
+    padding: 0.9rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 }

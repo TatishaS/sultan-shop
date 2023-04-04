@@ -1,22 +1,23 @@
 import React, { FC } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import LocationIcon from "../assets/images/icon-location.svg";
-import EmailIcon from "../assets/images/icon-email.svg";
-import BasketIcon from "../assets/images/icon-basket.svg";
+import locationIcon from "../assets/images/icon-location.svg";
+import emailIcon from "../assets/images/icon-email.svg";
+import basketIcon from "../assets/images/icon-basket.svg";
 import logo from "../assets/images/lovo.svg";
+import operator from "../assets/images/operator.png";
 
 const Header: FC = () => {
   return (
     <header className="header">
-      <div className="container">
-        <div className="wrapper">
-          <div className="header__inner">
-            <nav className="header__nav">
-              <div className="header__top">
+      <div className="header__container container">
+        <div className="header__inner">
+          <nav className="header__nav">
+            <div className="header__top">
+              <div className="header__wrapper wrapper">
                 <div className="header__blocks">
                   <div className="header__block-wrapper">
                     <img
-                      src={LocationIcon}
+                      src={locationIcon}
                       alt="Расположение"
                       className="header__icon-img"
                     />
@@ -31,7 +32,7 @@ const Header: FC = () => {
                   </div>
                   <div className="header__block-wrapper">
                     <img
-                      src={EmailIcon}
+                      src={emailIcon}
                       alt="Электронная почта"
                       className="header__icon-img"
                     />
@@ -67,7 +68,9 @@ const Header: FC = () => {
                   </li>
                 </ul>
               </div>
-              <div className="header__bottom">
+            </div>
+            <div className="header__bottom">
+              <div className="header__wrapper wrapper">
                 <a className="header__logo" href="#">
                   <img src={logo} alt="Sultan logo" width="156" height="66" />
                 </a>
@@ -77,49 +80,64 @@ const Header: FC = () => {
                     <input
                       type="text"
                       className="search__input"
-                      placeholder="Укажите название профиля GitHub"
+                      placeholder="Поиск..."
                     />
-                    <button className="search__btn" type="submit">
-                      Найти
-                    </button>
+                    <button className="search__btn" type="submit"></button>
                   </form>
                 </div>
                 <div className="header__contact">
-                  <div className="header__contact-phone">
-                    +7 (777) 490-00-91
+                  <div className="header__contact-info">
+                    <a
+                      className="header__contact-phone"
+                      href="tel:+77774900091"
+                    >
+                      +7 (777) 490-00-91
+                    </a>
+                    <div className="header__contact-time">
+                      время работы: 9:00-20:00
+                    </div>
+                    <button className="header__contact-order">
+                      Заказать звонок
+                    </button>
                   </div>
-                  <div className="header__contact-time">
-                    время работы: 9:00-20:00
-                  </div>
-                  <button className="header__contact-order">
-                    Заказать звонок
-                  </button>
+
                   <div className="header__contact-operator">
                     <div className="header__operator-avatar">
-                      <img src="" alt="" className="header__operator-img" />
+                      <img
+                        src={operator}
+                        alt="Фото оператора"
+                        className="header__operator-img"
+                      />
+                      <span className="header__operator-status"></span>
                     </div>
                   </div>
                 </div>
-                <a href="#" className="header__pricelist btn">
+                <div className="divider divider--long"></div>
+                <a href="#" className="header__pricelist-btn btn">
                   Прайс-лист
                 </a>
+                <div className="divider divider--long"></div>
                 <div className="header__cart-wrapper">
                   <a href="#" className="header__cart-link">
                     <img
-                      src={BasketIcon}
+                      src={basketIcon}
                       alt="Корзина"
                       className="header__cart-img"
                     />
                     <span className="header__cart-quantity">1</span>
                   </a>
+                  <div className="header__cart-info">
+                    <span className="header__cart-text">Корзина</span>
+                    <span className="header__cart-total">12 478 ₸</span>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <button className="menu__burger">
-                <span></span>
-              </button>
-            </nav>
-          </div>
+            <button className="menu__burger">
+              <span></span>
+            </button>
+          </nav>
         </div>
       </div>
     </header>

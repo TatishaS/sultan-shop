@@ -1,106 +1,136 @@
 .footer {
-  min-height: 5.6rem;
+  min-height: 50rem;
   background: $gray;
   color: #ffffff;
+  padding: 7.1rem 11.6rem;
 
   &__inner {
-    max-width: 100rem;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 11rem;
-    padding: 8rem 0;
+    grid-template-columns: 32rem 95.4rem;
+    grid-gap: 5.9rem;
+  }
+
+  &__navigation {
+    display: grid;
+    grid-template-columns: 12.9rem 17rem 21.4rem 15.2rem;
+    grid-gap: 9.5rem;
   }
 
   &__logo {
     display: block;
-    margin-bottom: 2.2rem;
-  }
-
-  &__info-phone,
-  &__info-email {
-    display: block;
-    font-size: 1.2rem;
-    line-height: 1.4rem;
-    color: rgba(255, 255, 255, 0.75);
-    cursor: pointer;
     margin-bottom: 1.5rem;
   }
 
-  &__navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  &__about {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    margin-bottom: 4.5rem;
   }
 
-  &__menu:not(:last-child) {
-    margin-right: 11.8rem;
+  &__subscribe {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-bottom: 1.4rem;
+  }
+
+  &__subscribe-input {
+    width: 28.2rem;
+  }
+
+  &__subscribe-btn {
+    background-image: url("../../assets/images/icon-arrow-white.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 0.8rem 1.5rem;
   }
 
   &__menu-title {
-    font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 1.6rem;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-bottom: 2.5rem;
+  }
 
-    color: #ffffff;
-    margin-bottom: 3.3rem;
+  &__list-item {
+    margin-bottom: 2rem;
   }
 
   &__listitem-link {
-    font-size: 1.2rem;
-    line-height: 1.4rem;
-
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 1.3rem;
     cursor: pointer;
+    color: #ffffff;
   }
-}
 
-@media (max-width: 1150px) {
-  .footer {
-    &__inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    &__menu:not(:last-child) {
-      margin-right: 5rem;
-    }
+  &__pricelist-btn {
+    min-width: 21.4rem;
+    margin-bottom: 2rem;
   }
-}
-
-@media (max-width: 860px) {
-  .footer {
-    &__inner {
-      flex-direction: column-reverse;
-    }
+  &__contact-text {
+    margin-bottom: 1.5rem;
   }
-}
+  &__social {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-@media (max-width: 639px) {
-  .footer {
-    &__inner {
-      display: block;
-      padding: 4rem 0;
-    }
+  &__social-link {
+    display: inline-block;
+    width: 3.9rem;
+    height: 3.9rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    margin-bottom: 1rem;
+  }
+  &__social-link--whatsapp {
+    background-image: url(../../assets/images/icon-whatsapp.svg);
+  }
+  &__social-link--telegram {
+    background-image: url(../../assets/images/icon-telegram.svg);
+  }
 
-    &__info {
-      margin-bottom: 4rem;
-    }
-    &__navigation {
-      display: block;
-    }
+  &__contact-phone {
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  &__contact-time {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  &__contact-order {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-decoration-line: underline;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
+  }
 
-    &__menu:not(:last-child) {
-      margin-right: 0;
-    }
+  &__email-top {
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
 
-    &__menu {
-      margin-bottom: 4rem;
-    }
+  &__email-bottom {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    margin-bottom: 2.5rem;
+  }
+
+  &__methods {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__method-item {
+    margin-right: 0.5rem;
   }
 }

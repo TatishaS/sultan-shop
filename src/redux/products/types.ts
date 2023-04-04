@@ -14,7 +14,7 @@ export interface IProductItem {
   producer: string;
   brand: string;
   description: string;
-  category: string;
+  category: string[];
 }
 
 export interface ProductsSliceState {

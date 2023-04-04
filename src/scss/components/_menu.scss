@@ -5,9 +5,13 @@
     align-items: center;
     flex-wrap: wrap;
   }
+  &__list-item {
+    padding-left: 3rem;
+  }
 
   &__list-item:not(:last-child) {
-    margin-right: 6rem;
+    padding-right: 3rem;
+    border-right: 0.1rem dashed rgba(63, 78, 101, 0.1);
   }
 
   &__list-itemimg {
@@ -17,6 +21,7 @@
   }
 
   &__list-itemlink {
+    color: $gray;
     &::hover {
       color: $black;
     }

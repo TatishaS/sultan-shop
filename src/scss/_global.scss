@@ -41,8 +41,7 @@ img {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-
-  max-width: 136.6rem;
+  max-width: 137rem;
   margin: 0 auto;
 }
 .container {
@@ -67,21 +66,6 @@ img {
   overflow: hidden;
 }
 
-.visually-hidden:not(:focus):not(:active) {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-
-  white-space: nowrap;
-
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
 .footer {
   flex: 0 0 auto;
 }

@@ -1,9 +1,4 @@
-export type SigninForm = {
-  username: string;
-  password: string;
-};
-
-export interface IProductItem {
+export interface IItem {
   id: string;
   imageUrl: string;
   title: string;
@@ -15,14 +10,3 @@ export interface IProductItem {
   description: string;
   category: string;
 }
-
-export type AddRowForm = {
-  companySigDate: string;
-  companySignatureName: string;
-  documentName: string;
-  documentStatus: string;
-  documentType: string;
-  employeeNumber: string;
-  employeeSigDate: string;
-  employeeSignatureName: string;
-};
