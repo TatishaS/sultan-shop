@@ -64,7 +64,8 @@
     color: $black;
   }
 
-  &__search {
+  &__search-wrapper {
+    width: 100%;
     margin-bottom: 1.5rem;
   }
 
@@ -131,16 +132,6 @@
 
   &__btn {
     min-width: 16.9rem;
-    &--clear {
-      width: 5.9rem;
-      height: 5.9rem;
-      background-image: url("../../assets/images/icon-trashcan.svg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 2.5rem 2.5rem;
-      background-color: $accent-yellow;
-      border-radius: 50%;
-    }
   }
 
   &__categories-item {

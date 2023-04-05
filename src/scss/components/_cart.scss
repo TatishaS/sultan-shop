@@ -1,0 +1,27 @@
+.cart {
+  padding-bottom: 10rem;
+  &__title {
+    margin-bottom: 5rem;
+  }
+  &__items {
+    margin-bottom: 5rem;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn-total {
+    min-width: 19.2rem;
+  }
+
+  &__price-total {
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.9rem;
+
+    color: $black;
+  }
+}

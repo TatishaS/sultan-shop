@@ -14,11 +14,28 @@ const Cart: FC = () => {
   );
 
   return (
-    <>
-      {cartItems.map((item) => (
-        <CartItem />
-      ))}
-    </>
+    <div className="container">
+      <section className="cart">
+        <div className="wrapper">
+          <h1 className="cart__title page-title">Корзина</h1>
+          <ul className="cart__items">
+            {cartItems.map((item) => (
+              <CartItem />
+            ))}
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+          </ul>
+          <div className="cart__total">
+            <button type="submit" className="cart__btn-total btn">
+              Оформить заказ
+            </button>
+            <span className="cart__price-total">1 348,76 ₸</span>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

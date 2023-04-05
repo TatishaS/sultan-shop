@@ -80,7 +80,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100%;
-    margin-bottom: 1rem;
+    margin-right: 1rem;
   }
   &__social-link--whatsapp {
     background-image: url(../../assets/images/icon-whatsapp.svg);
@@ -90,6 +90,7 @@
   }
 
   &__contact-phone {
+    display: inline-block;
     font-weight: 600;
     text-decoration: none;
     color: #ffffff;
@@ -109,6 +110,7 @@
     background: transparent;
     color: #ffffff;
     margin-bottom: 2.5rem;
+    cursor: pointer;
   }
 
   &__email-top {

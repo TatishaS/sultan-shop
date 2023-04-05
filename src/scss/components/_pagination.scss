@@ -35,12 +35,10 @@
 
     width: 3.5rem;
     height: 3.5rem;
+    color: $gray;
   }
   &__list-num.active {
     border-radius: 50%;
     background: $yellow-gradient;
-  }
-  &__list-num--active {
-    color: $black;
   }
 }

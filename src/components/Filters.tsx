@@ -32,7 +32,7 @@ const Filters = () => {
         </div>
         <fieldset className="filters__fieldset">
           <legend className="filters__legend">Производитель:</legend>
-          <div className="filters-search search">
+          <div className="filters__search-wrapper search">
             <input
               type="text"
               className="filters__search search__input"
@@ -71,7 +71,7 @@ const Filters = () => {
         </fieldset>
         <fieldset className="filters__fieldset">
           <legend className="filters__legend">Бренд:</legend>
-          <div className="filters-search search">
+          <div className="filters__search-wrapper search">
             <input
               type="text"
               className="filters__search search__input"
@@ -112,7 +112,10 @@ const Filters = () => {
           <button className="filters__btn btn" type="submit">
             Показать
           </button>
-          <button className="filters__btn--clear btn" type="submit"></button>
+          <button
+            className="filters__btn-clear btn--clear btn"
+            type="submit"
+          ></button>
         </div>
       </form>
       <ul className="filters__categories-list">

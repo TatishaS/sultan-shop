@@ -20,7 +20,7 @@ const ProductCard: FC<CardProps> = ({
   sizeType,
 }) => {
   return (
-    <Link to={`/products/2`}>
+    <Link to={`/product/2`}>
       <div className="card">
         <div className="card__img-wrapper">
           <img src={imageUrl} alt="фото товара" className="card__img" />

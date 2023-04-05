@@ -36,21 +36,21 @@ const Home: FC = () => {
       <div className="catalog">
         <div className="wrapper">
           <div className="catalog__title-wrapper">
-            <h1 className="catalog__title">Косметика и гигиена</h1>
+            <h1 className="catalog__title page-title">Косметика и гигиена</h1>
             <Sort />
           </div>
           <Categories />
           <div className="catalog__inner">
             <Filters />
             <div className="catalog__products-wrapper">
-              <div className="products">
+              <section className="products">
                 {status === "success" &&
                   products?.map((product: any) => (
                     <ProductCard key={product.id} {...product} />
                   ))}
                 {status === "loading" && <h2>Идет загрузка...</h2>}
                 {status === "error" && <h2>Произошла ошибка</h2>}
-              </div>
+              </section>
               <Pagination />
               <p className="catalog__text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
