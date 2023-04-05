@@ -1,5 +1,5 @@
 export interface IItem {
-  id: string;
+  id: number;
   imageUrl: string;
   title: string;
   sizeType: string;

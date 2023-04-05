@@ -9,7 +9,7 @@ const initialState: ProductsSliceState = {
 };
 
 export const fetchProducts = createAsyncThunk<IProductItem[]>(
-  "products/fetchTableData",
+  "products/fetchProducts",
   async () => {
     const response = await axiosInstance.get("/");
     console.log(response.data);

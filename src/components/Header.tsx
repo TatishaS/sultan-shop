@@ -71,9 +71,9 @@ const Header: FC = () => {
             </div>
             <div className="header__bottom">
               <div className="header__wrapper wrapper">
-                <a className="header__logo" href="#">
+                <Link to="/" className="header__logo">
                   <img src={logo} alt="Sultan logo" width="156" height="66" />
-                </a>
+                </Link>
                 <a className="header__catalog-btn btn">Каталог</a>
                 <div className="header__search">
                   <form className="header__search-form search">
@@ -118,14 +118,14 @@ const Header: FC = () => {
                 </a>
                 <div className="divider divider--long"></div>
                 <div className="header__cart-wrapper">
-                  <a href="#" className="header__cart-link">
+                  <Link to="/cart" className="header__cart-link">
                     <img
                       src={basketIcon}
                       alt="Корзина"
                       className="header__cart-img"
                     />
                     <span className="header__cart-quantity">1</span>
-                  </a>
+                  </Link>
                   <div className="header__cart-info">
                     <span className="header__cart-text">Корзина</span>
                     <span className="header__cart-total">12 478 ₸</span>
