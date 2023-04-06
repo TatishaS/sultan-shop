@@ -82,5 +82,22 @@
     line-height: 1.2rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
+    position: relative;
+
+    i {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      color: #fff;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+      position: absolute;
+      top: 0.3rem;
+      right: 1.3rem;
+    }
   }
 }

@@ -69,3 +69,6 @@ const Home: FC = () => {
 };
 
 export default Home;
+function addToCart(id: string): any {
+  throw new Error("Function not implemented.");
+}

@@ -1,0 +1,40 @@
+.modal {
+  position: relative;
+  display: none;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  max-width: 40rem;
+  height: 40rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 4rem 4rem;
+
+  &--show {
+    display: block;
+  }
+
+  &__close-btn {
+    position: absolute;
+    content: "";
+    width: 1.6rem;
+    height: 1.6rem;
+    top: 4rem;
+    right: 4rem;
+    background: center no-repeat url(../../assets/images/icon-close-modal.svg)
+      transparent;
+    cursor: pointer;
+    border: none;
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 39rem;
+    color: $black;
+  }
+}

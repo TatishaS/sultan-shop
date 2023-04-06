@@ -1,46 +1,85 @@
-import React from "react";
+import React, { FC } from "react";
 import cartImg from "../assets/images/card-1.png";
 import bottle from "../assets/images/icon-bottle.svg";
 import box from "../assets/images/icon-box.svg";
+import { useAppDispatch } from "../utils/hooks";
+import {
+  addToCart,
+  decreaseCartItem,
+  deleteFromCart,
+} from "../redux/cart/slice";
+import { ICartItem } from "../redux/cart/types";
 
-const CartItem = () => {
+type CartItemProps = {
+  item: ICartItem;
+};
+
+const CartItem: FC<CartItemProps> = ({ item }) => {
+  const dispatch = useAppDispatch();
+
+  const handleClickPlus = () => {
+    dispatch(addToCart(item));
+  };
+
+  const handleClickMinus = () => {
+    dispatch(decreaseCartItem(item.id));
+  };
+
+  const handleClickDelete = () => {
+    dispatch(deleteFromCart(item.id));
+  };
   return (
     <li className="cart-item">
       <div className="cart-item__inner">
         <div className="cart-item__img-wrapper">
-          <img src={cartImg} alt="Фото товара" className="cart-item__img" />
+          <img
+            src={item.imageUrl}
+            alt="Фото товара"
+            className="cart-item__img"
+          />
         </div>
 
         <div className="cart-item__info">
           <p className="cart-item__volume">
             <img
-              src={bottle}
+              src={item.sizeType === "volume" ? bottle : box}
               alt=""
-              className="cart-item__volume-img cart-item__volume-img--bottle"
+              className={
+                item.sizeType === "volume"
+                  ? "cart-item__volume-img cart-item__volume-img--bottle"
+                  : "cart-item__volume-img"
+              }
             />
-            450 мл
+            {item.size}
           </p>
 
-          <p className="cart-item__name">
-            AOS средство для мытья посуды Crystal
-          </p>
+          <p className="cart-item__name">{item.title.substring(0, 50)}...</p>
           <p className="cart-item__descr">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            interdum ut justo, vestibulum sagittis iaculis iaculis. Quis mattis
-            vulputate feugiat massa vestibulum duis.
+            {item.description.substring(0, 150)}...
           </p>
         </div>
-        <div className="cart-item__count-wrapper">
-          <button className="cart-item__btn-count cart-item__btn-count--minus">
-            -
-          </button>
-          <span className="cart-item__count">1</span>
-          <button className="cart-item__btn-count cart-item__btn-count--plus">
-            +
-          </button>
+        <div className="cart-item__right">
+          <div className="cart-item__count-wrapper">
+            <button
+              className="cart-item__btn-count cart-item__btn-count--minus"
+              onClick={handleClickMinus}
+            >
+              -
+            </button>
+            <span className="cart-item__count">{item.count}</span>
+            <button
+              className="cart-item__btn-count cart-item__btn-count--plus"
+              onClick={handleClickPlus}
+            >
+              +
+            </button>
+          </div>
+          <div className="cart-item__price">{item.price} ₸</div>
+          <button
+            className="cart-item__btn btn btn--clear"
+            onClick={handleClickDelete}
+          ></button>
         </div>
-        <div className="cart-item__price">48,76 ₸</div>
-        <button className="cart-item__btn btn btn--clear"></button>
       </div>
     </li>
   );

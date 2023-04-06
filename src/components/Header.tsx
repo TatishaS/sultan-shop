@@ -5,8 +5,20 @@ import emailIcon from "../assets/images/icon-email.svg";
 import basketIcon from "../assets/images/icon-basket.svg";
 import logo from "../assets/images/lovo.svg";
 import operator from "../assets/images/operator.png";
+import { useAppDispatch, useAppSelector } from "../utils/hooks";
+import { ICartItem } from "../redux/cart/types";
 
 const Header: FC = () => {
+  const dispatch = useAppDispatch();
+  const { cartItems, totalPrice } = useAppSelector((state) => state.cart);
+
+  const _cartItems: ReadonlyArray<ICartItem> = cartItems;
+  const totalCount =
+    cartItems &&
+    _cartItems.reduce((sum: number, item: ICartItem) => {
+      return sum + item.count;
+    }, 0);
+
   return (
     <header className="header">
       <div className="header__container container">
@@ -124,11 +136,15 @@ const Header: FC = () => {
                       alt="Корзина"
                       className="header__cart-img"
                     />
-                    <span className="header__cart-quantity">1</span>
+                    {totalCount > 0 && (
+                      <span className="header__cart-quantity">
+                        {totalCount}
+                      </span>
+                    )}
                   </Link>
                   <div className="header__cart-info">
                     <span className="header__cart-text">Корзина</span>
-                    <span className="header__cart-total">12 478 ₸</span>
+                    <span className="header__cart-total">{totalPrice} ₸</span>
                   </div>
                 </div>
               </div>

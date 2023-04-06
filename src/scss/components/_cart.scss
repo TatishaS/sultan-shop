@@ -24,4 +24,8 @@
 
     color: $black;
   }
+
+  &.cart--empty {
+    min-height: calc(100vh - 19rem);
+  }
 }

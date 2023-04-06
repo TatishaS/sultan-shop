@@ -1,17 +1,29 @@
-import React, { FC } from "react";
-import { Navigate } from "react-router-dom";
-
+import React, { FC, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
-import { setCart } from "../redux/cart/slice";
-import Spinner from "../components/Spinner.js";
-import ErrorBlock from "../components/ErrorBlock";
+import { clearCart, setCart } from "../redux/cart/slice";
+
 import CartItem from "../components/CartItem";
+import CartEmpty from "../components/CartEmpty";
+import ThanksForOrder from "../components/ThanksForOrder";
 
 const Cart: FC = () => {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useAppDispatch();
-  const { cartItems, totalPrice, status, error } = useAppSelector(
-    (state) => state.cart
-  );
+  const { cartItems, totalPrice } = useAppSelector((state) => state.cart);
+
+  if (cartItems.length === 0) {
+    return <CartEmpty />;
+  }
+
+  const handleOrder = () => {
+    console.log("Заказ");
+    setShowModal(true);
+
+    setTimeout(() => {
+      setShowModal(false);
+      dispatch(clearCart());
+    }, 5000);
+  };
 
   return (
     <div className="container">
@@ -19,20 +31,21 @@ const Cart: FC = () => {
         <div className="wrapper">
           <h1 className="cart__title page-title">Корзина</h1>
           <ul className="cart__items">
-            {cartItems.map((item) => (
-              <CartItem />
+            {cartItems.map((item: any) => (
+              <CartItem key={item.id} item={item} />
             ))}
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
           </ul>
           <div className="cart__total">
-            <button type="submit" className="cart__btn-total btn">
+            <button
+              type="submit"
+              className="cart__btn-total btn"
+              onClick={handleOrder}
+            >
               Оформить заказ
             </button>
-            <span className="cart__price-total">1 348,76 ₸</span>
+            <span className="cart__price-total">{totalPrice} ₸</span>
           </div>
+          {showModal && <ThanksForOrder />}
         </div>
       </section>
     </div>

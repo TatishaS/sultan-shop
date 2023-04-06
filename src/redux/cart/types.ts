@@ -9,6 +9,7 @@ export interface ICartItem {
   imageUrl: string;
   title: string;
   sizeType: string;
+  size: string;
   barcode: string;
   price: number;
   producer: string;
@@ -21,6 +22,4 @@ export interface ICartItem {
 export interface CartSliceState {
   cartItems: [] | ICartItem[];
   totalPrice: number;
-  status: Status;
-  error: null | string;
 }

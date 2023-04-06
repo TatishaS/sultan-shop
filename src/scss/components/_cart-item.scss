@@ -11,7 +11,7 @@
   }
 
   &__img-wrapper {
-    max-width: 28rem;
+    width: 28rem;
     margin-right: 2rem;
   }
   &__img {
@@ -24,7 +24,13 @@
 
   &__info {
     max-width: 48rem;
-    margin-right: 12.9rem;
+    margin-right: 2rem;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   &__volume {
