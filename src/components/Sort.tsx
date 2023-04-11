@@ -1,9 +1,34 @@
 import React, { FC } from "react";
 import arrow from "../assets/images/icon-arrow.svg";
+import { useAppDispatch } from "../utils/hooks";
+import { setSortBy } from "../redux/filter/slice";
 
-type Props = {};
+type SortProps = {
+  sortBy: string;
+};
 
-const Sort: FC = () => {
+export const sort = [
+  { sortType: "nameAsc", sortName: "по названию (А - Я)", arrowType: "asc" },
+  { sortType: "nameDesc", sortName: "по названию (Я - А)", arrowType: "desc" },
+  {
+    sortType: "priceAsc",
+    sortName: "по цене (сначала дешевые)",
+    arrowType: "asc",
+  },
+  {
+    sortType: "priceDesc",
+    sortName: "по цене (сначала дорогие)",
+    arrowType: "desc",
+  },
+  {
+    sortType: "defaultAsc",
+    sortName: "по умолчанию",
+    arrowType: "asc",
+  },
+];
+
+const Sort: FC<SortProps> = ({ sortBy }) => {
+  const dispatch = useAppDispatch();
   const [openSortPopup, setOpenSortPopup] = React.useState(false);
   const sortRef = React.useRef<HTMLDivElement>(null);
 
@@ -19,47 +44,48 @@ const Sort: FC = () => {
       document.body.removeEventListener("click", handleSortPopup);
     };
   }, []);
+
+  const handleChangeSort = (name: string) => {
+    dispatch(setSortBy(name));
+  };
   return (
     <div className="catalog__sort sort" ref={sortRef}>
       <div className="sort__label">
         <b>Сортировка:</b>
-        <span onClick={() => setOpenSortPopup(!openSortPopup)}>Название</span>
+        <p onClick={() => setOpenSortPopup(!openSortPopup)}>
+          {sortBy.length > 20 ? `${sortBy.substring(0, 15)}...` : sortBy}
+          <img
+            src={arrow}
+            className={
+              sortBy === "по названию (А - Я)" ||
+              sortBy === "по цене (сначала дешевые)"
+                ? "sort__item-arrow"
+                : "sort__item-arrow sort__item-arrow--desc"
+            }
+          />
+        </p>
       </div>
       {openSortPopup && (
         <div className="sort__popup">
           <ul>
-            <li className="sort__popup-item active">
-              Название по возрастанию
-              <img
-                src={arrow}
-                alt="по возрастанию"
-                className="sort__item-arrow"
-              />
-            </li>
-            <li className="sort__popup-item">
-              Название по убыванию
-              <img
-                src={arrow}
-                alt="по возрастанию"
-                className="sort__item-arrow sort__item-arrow--desc"
-              />
-            </li>
-            <li className="sort__popup-item">
-              Цена по возрастанию
-              <img
-                src={arrow}
-                alt="по возрастанию"
-                className="sort__item-arrow"
-              />
-            </li>
-            <li className="sort__popup-item">
-              Цена по убыванию
-              <img
-                src={arrow}
-                alt="по возрастанию"
-                className="sort__item-arrow sort__item-arrow--desc"
-              />
-            </li>
+            {sort.map((item) => (
+              <li
+                className="sort__popup-item active"
+                key={item.sortType}
+                onClick={() => handleChangeSort(item.sortName)}
+              >
+                {item.sortName}
+                <img
+                  src={arrow}
+                  alt={item.sortName}
+                  className={
+                    item.arrowType === "desc"
+                      ? "sort__item-arrow"
+                      : "sort__item-arrow sort__item-arrow--desc"
+                  }
+                />
+              </li>
+            ))}
           </ul>
         </div>
       )}

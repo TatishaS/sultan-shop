@@ -5,7 +5,7 @@ const Filters = () => {
   return (
     <aside className="catalog__filters filters">
       <h2 className="filters__title">ПОДБОР ПО ПАРАМЕТРАМ</h2>
-      <form className="filters-form">
+      <form className="filters__form">
         <div className="filters__price-block">
           <div className="filters__price-title">Цена ₸</div>
           <div className="filters__price-fields">
@@ -63,7 +63,7 @@ const Filters = () => {
                 name="Производитель2"
               />
               <label className="filters__option-label" htmlFor="Производитель2">
-                Производитель2{" "}
+                Производитель2
                 <span className="filters__label-quantity">(44)</span>
               </label>
             </li>
@@ -119,8 +119,10 @@ const Filters = () => {
         </div>
       </form>
       <ul className="filters__categories-list">
-        {categories.map((cat) => (
-          <li className="filters__categories-item">{cat}</li>
+        {categories.map((cat, idx) => (
+          <li className="filters__categories-item" key={idx}>
+            {cat}
+          </li>
         ))}
       </ul>
     </aside>

@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { CartSliceState, Status, ICartItem } from "./types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CartSliceState, ICartItem } from "./types";
 import { getCartFromLS } from "../../utils/getCartFromLS";
 import { calcTotalPrice } from "../../utils/calcTotalPrice";
 
@@ -29,7 +29,7 @@ export const cartSlice = createSlice({
       }
       state.totalPrice = calcTotalPrice(state.cartItems);
     },
-    decreaseCartItem: (state, action: PayloadAction<string>) => {
+    decreaseCartItem: (state, action: PayloadAction<number>) => {
       const items = [
         ...state.cartItems.map((item) =>
           item.id === action.payload && item.count > 1 ? item.count-- : item
@@ -37,7 +37,7 @@ export const cartSlice = createSlice({
       ];
       state.totalPrice = calcTotalPrice(state.cartItems);
     },
-    deleteFromCart: (state, action: PayloadAction<string>) => {
+    deleteFromCart: (state, action: PayloadAction<number>) => {
       const items = [
         ...state.cartItems.filter((item) => item.id !== action.payload),
       ];

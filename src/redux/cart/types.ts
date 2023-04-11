@@ -5,7 +5,7 @@ export enum Status {
 }
 
 export interface ICartItem {
-  id: string;
+  id: number;
   imageUrl: string;
   title: string;
   sizeType: string;
@@ -15,7 +15,7 @@ export interface ICartItem {
   producer: string;
   brand: string;
   description: string;
-  category: string;
+  category: string[];
   count: number;
 }
 

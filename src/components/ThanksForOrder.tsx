@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 
-const ThanksForOrder = () => {
+const ThanksForOrder: FC = () => {
   return (
     <>
       <div className="modal-overlay modal-overlay--show"></div>

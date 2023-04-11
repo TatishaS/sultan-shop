@@ -25,6 +25,60 @@ export const productsSlice = createSlice({
     setProducts: (state, action: PayloadAction<IProductItem[]>) => {
       state.products = action.payload;
     },
+    setProductsSorted: (state, action: PayloadAction<string>) => {
+      const sortedProducts = [...state.products].sort((a, b) => {
+        switch (action.payload) {
+          case "по цене (сначала дешевые)": {
+            if (a.price > b.price) {
+              return 1;
+            }
+            if (a.price < b.price) {
+              return -1;
+            }
+            return 0;
+          }
+          case "по цене (сначала дорогие)": {
+            if (b.price > a.price) {
+              return 1;
+            }
+            if (b.price < a.price) {
+              return -1;
+            }
+            return 0;
+          }
+          case "по названию (А - Я)": {
+            if (a.title > b.title) {
+              return 1;
+            }
+            if (a.title < b.title) {
+              return -1;
+            }
+            return 0;
+          }
+
+          case "по названию (Я - А)": {
+            if (b.title > a.title) {
+              return 1;
+            }
+            if (b.title < a.title) {
+              return -1;
+            }
+            return 0;
+          }
+          default: {
+            if (a.id > b.id) {
+              return 1;
+            }
+            if (a.id < b.id) {
+              return -1;
+            }
+            return 0;
+          }
+        }
+      });
+
+      state.products = sortedProducts;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -44,6 +98,6 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, setProductsSorted } = productsSlice.actions;
 
 export default productsSlice.reducer;

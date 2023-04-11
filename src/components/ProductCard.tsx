@@ -7,8 +7,10 @@ import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import { ICartItem } from "../redux/cart/types";
 import { addToCart } from "../redux/cart/slice";
 
+import { categories } from "./Categories";
+
 type CardProps = {
-  id: string;
+  id: number;
   imageUrl: string;
   title: string;
   price: number;
@@ -18,7 +20,7 @@ type CardProps = {
   producer: string;
   brand: string;
   description: string;
-  category: string;
+  category: string[];
 };
 
 const ProductCard: FC<CardProps> = ({
@@ -56,7 +58,7 @@ const ProductCard: FC<CardProps> = ({
       category,
       count: 0,
     };
-    console.log("Клик");
+
     dispatch(addToCart(item));
   };
 
@@ -92,6 +94,18 @@ const ProductCard: FC<CardProps> = ({
         <div className="card__row-wrapper">
           <span className="card__row-name">Бренд:</span>
           <span className="card__row-value">{brand}</span>
+        </div>
+        <div className="card__row-wrapper">
+          <span className="card__row-name">Категория:</span>
+          <span className="card__row-value">
+            {category.map((cat, i) => {
+              if (i !== category.length - 1) {
+                return `${cat}, `;
+              } else {
+                return `${cat}`;
+              }
+            })}
+          </span>
         </div>
       </div>
       <div className="card__bottom">

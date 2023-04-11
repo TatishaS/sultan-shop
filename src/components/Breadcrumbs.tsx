@@ -1,19 +1,54 @@
 import React, { FC } from "react";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useResolvedPath,
+} from "react-router-dom";
 
-const Breadcrumbs: FC = () => {
+export interface IBreadCrumbs {
+  id?: number;
+  path?: string;
+  title?: string;
+  url?: string;
+}
+
+const Breadcrumbs: FC<IBreadCrumbs> = ({ title }) => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  let currentLink = "";
+
+  const breadcrumbs = pathname.split("/").filter((item) => item !== "");
+
+  const breadcrumbName = (path: string) => {
+    if (path === "cart") {
+      return "Корзина";
+    } else if (path.includes("product")) {
+      return title;
+    }
+  };
+
   return (
     <nav className="breadcrumbs">
       <div className="container">
         <div className="wrapper">
           <ul className="breadcrumbs__list">
             <li className="breadcrumbs__item">
-              <a className="breadcrumbs__link" href="index.html">
-                Главная
-              </a>
+              <Link to="/" className="breadcrumbs__link">
+                Каталог
+              </Link>
             </li>
-            <li className="breadcrumbs__item">
-              <a className="breadcrumbs__link active">Косметика и гигиена</a>
-            </li>
+            {breadcrumbs.map((item) => {
+              currentLink += `/${item}`;
+              return (
+                <li className="breadcrumbs__item">
+                  <Link to={currentLink} className="breadcrumbs__link">
+                    {breadcrumbName(item)}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

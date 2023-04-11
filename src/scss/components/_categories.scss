@@ -16,4 +16,7 @@
     border-radius: 1rem;
     cursor: pointer;
   }
+  &__item.active {
+    border: 0.1rem solid $border-gray;
+  }
 }

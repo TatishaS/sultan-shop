@@ -1,28 +1,29 @@
 import React, { FC } from "react";
 
-type Props = {};
+type CategoriesProps = {
+  value: string | null;
+  handleChangeCategory: (name: string) => void;
+};
 
 export const categories = [
   "Уход за телом",
   "Уход за руками",
   "Уход за ногами",
   "Уход за лицом",
-
-  "Уход за волосами",
-  "Средства для загара",
-  "Средства для бритья",
-  "Подарочные наборы",
-  "Гигиеническая продукция",
-  "Гигиена полости рта",
-  "Бумажная продукция",
 ];
 
-const Categories: FC = (props: Props) => {
+const Categories: FC<CategoriesProps> = ({ handleChangeCategory, value }) => {
   return (
     <div className="catalog__categories categories">
       <ul className="categories__list">
         {categories.map((cat, idx) => (
-          <li className="categories__item" key={idx}>
+          <li
+            className={
+              cat === value ? "categories__item active" : "categories__item"
+            }
+            key={idx}
+            onClick={() => handleChangeCategory(cat)}
+          >
             {cat}
           </li>
         ))}
