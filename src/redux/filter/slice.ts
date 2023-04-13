@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { FilterSliceState } from "./types";
 
 const initialState: FilterSliceState = {
+  searchValue: "",
   activeCategory: null,
   sortBy: "по умолчанию",
 };
@@ -16,9 +17,14 @@ export const filterSlice = createSlice({
     setSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload;
     },
+    setSearchValue: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload;
+      console.log(state.searchValue);
+    },
   },
 });
 
-export const { setActiveCategory, setSortBy } = filterSlice.actions;
+export const { setActiveCategory, setSortBy, setSearchValue } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;

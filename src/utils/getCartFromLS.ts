@@ -11,3 +11,13 @@ export const getCartFromLS = () => {
     totalPrice,
   };
 };
+
+export const getAdminFromLS = () => {
+  const data = localStorage.getItem("admin");
+
+  const adminItems = data ? JSON.parse(data) : [];
+
+  return {
+    adminItems,
+  };
+};

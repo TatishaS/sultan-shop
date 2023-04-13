@@ -16,14 +16,12 @@ const Pagination: FC<PaginationProps> = ({
   handlePageNext,
   handleSwitchPage,
 }) => {
-  console.log(pagesTotal);
   const pageNumbers: any = [];
 
   for (let i = 1; i <= pagesTotal; i++) {
     pageNumbers.push(i);
   }
 
-  console.log(pageNumbers);
   return (
     <div className="catalog__pagination pagination">
       <a

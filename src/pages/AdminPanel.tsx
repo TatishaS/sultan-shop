@@ -5,7 +5,6 @@ import { fetchProducts, setProductsSorted } from "../redux/products/slice";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import { useParams } from "react-router-dom";
 import Product from "./Product";
-import ProductCard from "../components/ProductCard";
 import Sort from "../components/Sort";
 import Categories from "../components/Categories";
 import Filters from "../components/Filters";
@@ -17,22 +16,41 @@ import {
 } from "../redux/filter/slice";
 import { IProductItem } from "../redux/products/types";
 import Breadcrumbs from "../components/Breadcrumbs";
+import AdminProductCard from "../components/AdminProductCard";
+import { deleteAdminItem, setAdminItems } from "../redux/admin/slice";
 
-const Home: FC = () => {
+const AdminPanel: FC = () => {
   const dispatch = useAppDispatch();
-  const { products, status, error } = useAppSelector((state) => state.products);
-  const { activeCategory, sortBy, searchValue } = useAppSelector(
-    (state) => state.filter
-  );
+  const { products, error, status } = useAppSelector((state) => state.products);
+  const { adminItems } = useAppSelector((state) => state.admin);
+  const { searchValue } = useAppSelector((state) => state.filter);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
+  React.useEffect(() => {
+    if (adminItems.length === 0) {
+      console.log("Если в админке пусто");
+      dispatch(fetchProducts());
+      status === "success" && dispatch(setAdminItems(products));
+    }
+    console.log(adminItems);
+  }, []);
+
+  /* Search */
+  const handleClearSearch = () => {
+    dispatch(setSearchValue(""));
+  };
+
+  const handleClickDeleteItem = (id: number) => {
+    dispatch(deleteAdminItem(id));
+  };
+
   /* Pagination */
-  const productsPerPage = 12;
-  const pagesTotal = Math.ceil(products.length / productsPerPage);
+  /*  const productsPerPage = 12;
+  const pagesTotal = Math.ceil(adminItems.length / productsPerPage);
 
   const lastProductToShowIndex = productsPerPage * currentPage;
   const firstProductToShowIndex = lastProductToShowIndex - productsPerPage;
-  const currentProducts = products.slice(
+  const currentItems = adminItems.slice(
     firstProductToShowIndex,
     lastProductToShowIndex
   );
@@ -48,40 +66,7 @@ const Home: FC = () => {
     setCurrentPage(num);
   };
 
-  /* Categories */
-  const handleChangeCategory = (name: string) => {
-    dispatch(setActiveCategory(name));
-  };
-
-  /* Search */
-  const handleClearSearch = () => {
-    dispatch(setSearchValue(""));
-  };
-
-  /* Getting data */
-  const getProducts = async () => {
-    try {
-      await dispatch(fetchProducts());
-    } catch (error) {
-      console.error(error);
-      alert("ОШИБКА:" + error);
-    }
-  };
-
-  React.useEffect(() => {
-    getProducts();
-    dispatch(setSortBy("по умолчанию"));
-  }, [searchValue]);
-
-  React.useEffect(() => {
-    dispatch(setProductsSorted(sortBy));
-  }, [sortBy]);
-
-  const filteredProducts = products.filter(
-    (product) => activeCategory && product.category.includes(activeCategory)
-  );
-
-  const items = activeCategory ? filteredProducts : currentProducts;
+  const items = currentItems; */
 
   return (
     <>
@@ -99,36 +84,29 @@ const Home: FC = () => {
                   <span>Очистить поиск</span>
                 </button>
               ) : null}
-              <Sort sortBy={sortBy} />
             </div>
-            <Categories
-              value={activeCategory}
-              handleChangeCategory={handleChangeCategory}
-            />
+
             <div className="catalog__inner">
               <Filters />
               <div className="catalog__products-wrapper">
                 <section className="products">
-                  {status === "success" &&
-                    items
-                      ?.filter((item) =>
-                        item.title
-                          .toLowerCase()
-                          .includes(searchValue.toLowerCase())
-                      )
-                      .map((product: any) => (
-                        <ProductCard key={product.id} {...product} />
-                      ))}
+                  {adminItems?.map((product: any) => (
+                    <AdminProductCard
+                      key={product.id}
+                      {...product}
+                      handleClickDeleteItem={handleClickDeleteItem}
+                    />
+                  ))}
                   {status === "loading" && <h2>Идет загрузка...</h2>}
                   {status === "error" && <h2>Произошла ошибка</h2>}
                 </section>
-                <Pagination
+                {/*                 <Pagination
                   pagesTotal={pagesTotal}
                   currentPage={currentPage}
                   handlePageNext={handlePageNext}
                   handlePagePrev={handlePagePrev}
                   handleSwitchPage={handleSwitchPage}
-                />
+                /> */}
                 <p className="catalog__text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nullam interdum ut justo, vestibulum sagittis iaculis iaculis.
@@ -146,4 +124,4 @@ const Home: FC = () => {
   );
 };
 
-export default Home;
+export default AdminPanel;

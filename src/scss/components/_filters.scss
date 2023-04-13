@@ -97,6 +97,10 @@
     color: $black;
   }
 
+  &__filter-input-checkbox {
+    display: none;
+  }
+
   &__filter-input-checkbox + label::before {
     content: "";
     position: absolute;

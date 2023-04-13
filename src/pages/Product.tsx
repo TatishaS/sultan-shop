@@ -1,24 +1,24 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
-import productImg from "../assets/images/product-1.jpg";
 import bottle from "../assets/images/icon-bottle.svg";
 import share from "../assets/images/icon-share.svg";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import { fetchProducts } from "../redux/products/slice";
 import { IProductItem } from "../redux/products/types";
 import Breadcrumbs from "../components/Breadcrumbs";
+import { addToCart, decreaseCartItem } from "../redux/cart/slice";
+import { ICartItem } from "../redux/cart/types";
 
 export type MyParams = {
   id: string;
 };
 
 const Product: FC = () => {
-  //const [product, setProduct] = useState<IProductItem>();
   const navigate = useNavigate();
   let params = useParams<keyof MyParams>() as MyParams;
   const dispatch = useAppDispatch();
   const { products, status, error } = useAppSelector((state) => state.products);
+  const { cartItems } = useAppSelector((state) => state.cart);
   const productId = +params.id;
 
   React.useEffect(() => {
@@ -29,12 +29,39 @@ const Product: FC = () => {
     }
   }, []);
 
-  console.log(products);
-
   const currentProduct = products.find(
     (product: IProductItem) => product.id === productId
   );
-  console.log(currentProduct);
+
+  const isItemInCart = cartItems.find((item) => item.id === currentProduct?.id);
+  const count = isItemInCart ? isItemInCart.count : 0;
+
+  const handleClickAdd = () => {
+    if (currentProduct) {
+      console.log("Клик");
+      const item: ICartItem = {
+        id: currentProduct.id,
+        imageUrl: currentProduct.imageUrl,
+        title: currentProduct.title,
+        sizeType: currentProduct.sizeType,
+        size: currentProduct.size,
+        barcode: currentProduct.barcode,
+        price: currentProduct.price,
+        producer: currentProduct.producer,
+        brand: currentProduct.brand,
+        description: currentProduct.description,
+        category: currentProduct.category,
+        count: 0,
+      };
+      dispatch(addToCart(item));
+    }
+  };
+
+  const handleClickMinus = () => {
+    if (currentProduct) {
+      dispatch(decreaseCartItem(currentProduct.id));
+    }
+  };
 
   return (
     <>
@@ -71,15 +98,24 @@ const Product: FC = () => {
                       {currentProduct?.price} ₸
                     </div>
                     <div className="product__count-wrapper">
-                      <button className="product__btn-count product__btn-count--minus">
+                      <button
+                        className="product__btn-count product__btn-count--minus"
+                        onClick={handleClickMinus}
+                      >
                         -
                       </button>
-                      <span className="product__count">1</span>
-                      <button className="product__btn-count product__btn-count--plus">
+                      <span className="product__count">{count}</span>
+                      <button
+                        className="product__btn-count product__btn-count--plus"
+                        onClick={handleClickAdd}
+                      >
                         +
                       </button>
                     </div>
-                    <button className="product__cart-btn btn">
+                    <button
+                      className="product__cart-btn btn"
+                      onClick={handleClickAdd}
+                    >
                       <span>В корзину</span>
                       <svg
                         width="27"
@@ -110,9 +146,7 @@ const Product: FC = () => {
                       </p>
                     </div>
 
-                    <a href="#" className="product__pricelist">
-                      Прайс-лист
-                    </a>
+                    <a className="product__pricelist">Прайс-лист</a>
                   </div>
                   <div className="product__data">
                     <p className="product__data-row">

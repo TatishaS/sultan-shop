@@ -85,6 +85,7 @@
 
     text-align: center;
     border: none;
+    cursor: pointer;
   }
 
   &__count {
@@ -179,8 +180,18 @@
     color: $black;
   }
 
-  &__descr {
-    border-radius: 4px;
+  &__descr:not(:last-child) {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 29.9rem;
+      height: 0.1rem;
+      border-bottom: 0.1rem dashed rgba(63, 78, 101, 0.3);
+      bottom: 0;
+      left: 0;
+    }
   }
 
   &__descr-title {
@@ -188,10 +199,8 @@
     font-size: 1.6rem;
     line-height: 2.4rem;
     padding: 2rem 0;
-
     color: $black;
     cursor: pointer;
-
     list-style: none; // Remove the default arrow.
     display: flex;
     align-items: center; // Vertically center the arrow.
@@ -204,6 +213,8 @@
 
   &__descr-title::after {
     content: "▲";
+    font-size: 1rem;
+    padding-left: 1rem;
   }
 
   &__descr[open] .product__descr-title::after {
@@ -215,15 +226,5 @@
     font-size: 1.2rem;
     line-height: 1.8rem;
     padding-bottom: 2rem;
-    position: relative;
-    &::after {
-      position: absolute;
-      content: "";
-      width: 29.9rem;
-      height: 0.1rem;
-      border-bottom: 0.1rem dashed rgba(63, 78, 101, 0.3);
-      bottom: 0;
-      left: 0;
-    }
   }
 }

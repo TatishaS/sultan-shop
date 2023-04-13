@@ -7,6 +7,7 @@ import logo from "../assets/images/lovo.svg";
 import operator from "../assets/images/operator.png";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import { ICartItem } from "../redux/cart/types";
+import HeaderSearch from "./HeaderSearch";
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
@@ -73,10 +74,15 @@ const Header: FC = () => {
                       Возврат
                     </a>
                   </li>
-                  <li className="menu__list-item menu__list-item--authorized">
+                  <li className="menu__list-item">
                     <a href="#" className="menu__list-itemlink">
                       Контакты
                     </a>
+                  </li>
+                  <li className="menu__list-item">
+                    <Link to="/admin" className="menu__list-itemlink">
+                      Админ панель
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -87,16 +93,7 @@ const Header: FC = () => {
                   <img src={logo} alt="Sultan logo" width="156" height="66" />
                 </Link>
                 <a className="header__catalog-btn btn">Каталог</a>
-                <div className="header__search">
-                  <form className="header__search-form search">
-                    <input
-                      type="text"
-                      className="search__input"
-                      placeholder="Поиск..."
-                    />
-                    <button className="search__btn" type="submit"></button>
-                  </form>
-                </div>
+                <HeaderSearch />
                 <div className="header__contact">
                   <div className="header__contact-info">
                     <a
