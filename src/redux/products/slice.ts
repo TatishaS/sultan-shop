@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../utils/axios";
 import { ProductsSliceState, Status, IProductItem } from "./types";
+import { getAdminFromLS } from "../../utils/getDataFromLS";
 
 const initialState: ProductsSliceState = {
   products: [],
@@ -12,7 +13,6 @@ export const fetchProducts = createAsyncThunk<IProductItem[]>(
   "products/fetchProducts",
   async () => {
     const response = await axiosInstance.get("/");
-    console.log(response.data);
 
     return response.data;
   }
@@ -23,7 +23,9 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     setProducts: (state, action: PayloadAction<IProductItem[]>) => {
+      state.status = Status.LOADING;
       state.products = action.payload;
+      state.status = Status.SUCCESS;
     },
     setProductsSorted: (state, action: PayloadAction<string>) => {
       const sortedProducts = [...state.products].sort((a, b) => {

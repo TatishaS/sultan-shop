@@ -38,7 +38,6 @@ const Product: FC = () => {
 
   const handleClickAdd = () => {
     if (currentProduct) {
-      console.log("Клик");
       const item: ICartItem = {
         id: currentProduct.id,
         imageUrl: currentProduct.imageUrl,

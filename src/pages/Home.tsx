@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { FC } from "react";
 
-import { fetchProducts, setProductsSorted } from "../redux/products/slice";
+import {
+  fetchProducts,
+  setProducts,
+  setProductsSorted,
+} from "../redux/products/slice";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import { useParams } from "react-router-dom";
 import Product from "./Product";
@@ -21,6 +25,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 const Home: FC = () => {
   const dispatch = useAppDispatch();
   const { products, status, error } = useAppSelector((state) => state.products);
+  const { adminItems } = useAppSelector((state) => state.admin);
   const { activeCategory, sortBy, searchValue } = useAppSelector(
     (state) => state.filter
   );
@@ -69,7 +74,11 @@ const Home: FC = () => {
   };
 
   React.useEffect(() => {
-    getProducts();
+    if (adminItems.length > 0) {
+      dispatch(setProducts(adminItems));
+    } else {
+      getProducts();
+    }
     dispatch(setSortBy("по умолчанию"));
   }, [searchValue]);
 
@@ -106,7 +115,10 @@ const Home: FC = () => {
               handleChangeCategory={handleChangeCategory}
             />
             <div className="catalog__inner">
-              <Filters />
+              <Filters
+                value={activeCategory}
+                handleChangeCategory={handleChangeCategory}
+              />
               <div className="catalog__products-wrapper">
                 <section className="products">
                   {status === "success" &&

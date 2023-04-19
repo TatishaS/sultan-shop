@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 export interface IBreadCrumbs {
   title?: string;
 }
+
 const Breadcrumbs: FC<IBreadCrumbs> = ({ title }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -30,7 +32,7 @@ const Breadcrumbs: FC<IBreadCrumbs> = ({ title }) => {
             {breadcrumbs.map((item) => {
               currentLink += `/${item}`;
               return (
-                <li className="breadcrumbs__item">
+                <li className="breadcrumbs__item" key={item}>
                   <Link to={currentLink} className="breadcrumbs__link">
                     {breadcrumbName(item)}
                   </Link>

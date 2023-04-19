@@ -1,7 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import { categories } from "./Categories";
 
-const Filters = () => {
+type FiltersProps = {
+  value: string | null;
+  handleChangeCategory: (name: string) => void;
+};
+
+const Filters: FC<FiltersProps> = ({ value, handleChangeCategory }) => {
   return (
     <aside className="catalog__filters filters">
       <h2 className="filters__title">ПОДБОР ПО ПАРАМЕТРАМ</h2>
@@ -16,6 +21,7 @@ const Filters = () => {
               placeholder="0"
               id="min-price"
               name="minPrice"
+              onChange={() => console.log("Клик")}
             />
 
             <div className="filters__price-divider">-</div>
@@ -27,6 +33,7 @@ const Filters = () => {
               placeholder="10000"
               id="max-price"
               name="maxPrice"
+              onChange={() => console.log("Клик")}
             />
           </div>
         </div>
@@ -48,7 +55,6 @@ const Filters = () => {
                 id="Производитель1"
                 type="checkbox"
                 name="Производитель1"
-                checked
               />
               <label className="filters__option-label" htmlFor="Производитель1">
                 Производитель1{" "}
@@ -87,7 +93,6 @@ const Filters = () => {
                 id="Бренд1"
                 type="checkbox"
                 name="Бренд1"
-                checked
               />
               <label className="filters__option-label" htmlFor="Бренд1">
                 Бренд1
@@ -120,7 +125,15 @@ const Filters = () => {
       </form>
       <ul className="filters__categories-list">
         {categories.map((cat, idx) => (
-          <li className="filters__categories-item" key={idx}>
+          <li
+            className={
+              cat === value
+                ? "filters__categories-item active"
+                : "filters__categories-item"
+            }
+            key={idx}
+            onClick={() => handleChangeCategory(cat)}
+          >
             {cat}
           </li>
         ))}

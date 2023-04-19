@@ -26,7 +26,6 @@ const Pagination: FC<PaginationProps> = ({
     <div className="catalog__pagination pagination">
       <a
         className="pagination__arrow pagination__arrow"
-        href="#"
         onClick={handlePagePrev}
       >
         <img
@@ -49,7 +48,6 @@ const Pagination: FC<PaginationProps> = ({
                   ? "pagination__list-num active"
                   : "pagination__list-num"
               }
-              href="#"
             >
               {num}
             </a>
@@ -57,7 +55,7 @@ const Pagination: FC<PaginationProps> = ({
         ))}
       </ul>
 
-      <a className="pagination__arrow" href="#" onClick={handlePageNext}>
+      <a className="pagination__arrow" onClick={handlePageNext}>
         <img
           className="pagination__icon-arrow"
           src={arrowRight}

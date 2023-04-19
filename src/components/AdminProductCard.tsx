@@ -3,13 +3,7 @@ import { Link } from "react-router-dom";
 import bottle from "../assets/images/icon-bottle.svg";
 import box from "../assets/images/icon-box.svg";
 import deleteIcon from "../assets/images/icon-delete.svg";
-import saveIcon from "../assets/images/icon-save.svg";
 import editIcon from "../assets/images/icon-edit.svg";
-import { useAppDispatch, useAppSelector } from "../utils/hooks";
-import { ICartItem } from "../redux/cart/types";
-import { addToCart } from "../redux/cart/slice";
-
-import { categories } from "./Categories";
 
 type AdminCardProps = {
   id: number;
@@ -24,6 +18,7 @@ type AdminCardProps = {
   description: string;
   category: string[];
   handleClickDeleteItem: (id: number) => void;
+  handleEditModal: (id: number) => void;
 };
 
 const AdminProductCard: FC<AdminCardProps> = ({
@@ -39,14 +34,8 @@ const AdminProductCard: FC<AdminCardProps> = ({
   description,
   category,
   handleClickDeleteItem,
+  handleEditModal,
 }) => {
-  const dispatch = useAppDispatch();
-  const { cartItems } = useAppSelector((state) => state.cart);
-
-  const isItemInCart = cartItems.find((item) => item.id === id);
-
-  const count = isItemInCart ? isItemInCart.count : 0;
-
   return (
     <div className="card">
       <div className="card__img-wrapper">
@@ -94,9 +83,12 @@ const AdminProductCard: FC<AdminCardProps> = ({
         </div>
       </div>
       <div className="card__bottom">
-        <div className="card__price">{price} ₸</div>
+        <div className="card__price">{price}₸</div>
         <div className="card__bottom-btns">
-          <button className="card__edit-btn">
+          <button
+            className="card__edit-btn"
+            onClick={() => handleEditModal(id)}
+          >
             <img className="card__btn-img" src={editIcon} />
           </button>
           <button

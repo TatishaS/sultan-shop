@@ -148,5 +148,9 @@
     color: $black;
 
     border-bottom: 0.1rem dashed rgba(63, 78, 101, 0.3);
+
+    &.active {
+      font-weight: 700;
+    }
   }
 }

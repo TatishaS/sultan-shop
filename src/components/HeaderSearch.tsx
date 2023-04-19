@@ -14,7 +14,6 @@ const HeaderSearch = () => {
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(value);
     dispatch(setSearchValue(value));
     setValue("");
     searchInputRef.current?.focus();
